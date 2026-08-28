@@ -161,8 +161,6 @@ a{color:var(--brand);text-underline-offset:3px}
 .g-grass{fill:var(--floor-wash)}
 .g-post{fill:var(--brand)}
 .g-net{stroke:var(--brand);stroke-width:1.4;fill:none;opacity:.45}
-.g-cone{fill:var(--coral)}
-.g-cone-b{fill:var(--ink-faint);opacity:.35}
 .g-pad{fill:none;stroke-width:2.6}
 .g-drone{fill:var(--brand)}
 .g-trail{stroke:var(--gold-deep);stroke-width:2;stroke-dasharray:5 7;fill:none;opacity:.75}
@@ -180,6 +178,10 @@ a{color:var(--brand);text-underline-offset:3px}
   transition:border-color .18s ease,color .18s ease,background .18s ease;
 }
 .jump a:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-wash)}
+.jump a.cta{background:var(--brand);border-color:var(--brand);color:#FFF6EC;font-weight:700}
+.jump a.cta:hover{background:var(--brand-deep);border-color:var(--brand-deep);color:#FFF6EC}
+:root[data-theme="dark"] .jump a.cta{color:#241810}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .jump a.cta{color:#241810}}
 [id]{scroll-margin-top:1.25rem}
 /* ── 版面 ── */
 section{padding:2.9rem 0}
@@ -419,6 +421,8 @@ footer{border-top:2px dashed var(--line-strong);padding:2rem 0 3rem;color:var(--
 .dock .lbl b{font-family:var(--f-head);font-weight:900;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dock .lbl span{font-size:.79rem;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dock .btn{padding:.65rem 1.35rem;flex:none}
+.dock .btn svg{flex:none}
+.dock .tel{font-family:var(--f-num);font-size:1.05rem;font-weight:800;letter-spacing:.03em}
 /* ── 手機版型 ── */
 @media (max-width:559px){
   body{line-height:1.8}
@@ -495,6 +499,7 @@ footer{border-top:2px dashed var(--line-strong);padding:2rem 0 3rem;color:var(--
     <a href="#設備">人力與設備</a>
     <a href="#經費">經費概算</a>
     <a href="#效益">預期效益</a>
+    <a class="cta" href="#洽詢">洽詢辦理</a>
   </div>
 </nav>
 <main>
@@ -702,13 +707,9 @@ footer{border-top:2px dashed var(--line-strong);padding:2rem 0 3rem;color:var(--
       </div>
       <div class="box">
         <span class="hand">場地怎麼安排</span>
-        <p>建議主要活動空間約 <strong style="color:var(--ink);font-family:var(--f-num);font-size:1.15em">30 × 20</strong> 公尺以上，以空曠場地為原則、儘量避免桌椅遮擋，並依場地大小規劃三個區域：</p>
-        <ul class="marklist" style="grid-template-columns:1fr">
-          <li>操作區</li>
-          <li>等候區</li>
-          <li>休息區</li>
-        </ul>
-        <p style="margin-top:.3rem">整體採低高度、低速度、分區操作與教練陪同，兼顧安全與體驗品質。</p>
+        <p>建議主要活動空間約 <strong style="color:var(--ink);font-family:var(--f-num);font-size:1.15em">30 × 20</strong> 公尺以上，以空曠場地為原則、儘量避免桌椅遮擋。</p>
+        <p>不另外劃分區域，而是<strong style="color:var(--ink)">分組輪流、依序上場</strong>，讓場上人數維持在教練照顧得到的範圍，其他人在旁邊休息、觀摩、一起加油。</p>
+        <p>整體採低高度、低速度與教練陪同，兼顧安全與體驗品質。</p>
       </div>
     </div>
   </div></section>
@@ -734,8 +735,6 @@ footer{border-top:2px dashed var(--line-strong);padding:2rem 0 3rem;color:var(--
           <li>充電設備</li>
           <li>小型球門</li>
           <li>彩色停機坪</li>
-          <li>三角錐</li>
-          <li>安全區域標示</li>
         </ul>
         <p style="margin-top:.6rem">里民中心不需要大型舞台，也不需要複雜硬體建置即可辦理。</p>
       </div>
@@ -860,7 +859,10 @@ footer{border-top:2px dashed var(--line-strong);padding:2rem 0 3rem;color:var(--
       <b>銀髮飛行趣</b>
       <span>2 小時 ‧ 30～60 人 ‧ 零經驗可玩</span>
     </span>
-    <a class="btn btn-primary" href="#流程">看兩小時流程</a>
+    <a class="btn btn-primary tel" href="tel:035403463">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>
+      03-540-3463
+    </a>
   </div>
 </div>
 <div class="lb" id="lb" hidden>
@@ -894,7 +896,7 @@ footer{border-top:2px dashed var(--line-strong);padding:2rem 0 3rem;color:var(--
     });
   }
 
-  /* 頁首下緣：草地、球門、三角錐、彩色停機坪 */
+  /* 頁首下緣：地面、球門、彩色停機坪 */
   var ground = document.querySelector(".ground");
   if(ground){
     ground.appendChild(el("path",{"class":"g-sky",d:"M0,58 C170,40 330,72 520,56 C700,41 860,70 1040,52 C1120,44 1170,56 1200,50 L1200,130 L0,130 Z"}));
@@ -916,17 +918,9 @@ footer{border-top:2px dashed var(--line-strong);padding:2rem 0 3rem;color:var(--
     ground.appendChild(el("rect",{"class":"g-post",x:gx+gw-bar/2,y:gTop,width:bar,height:gBase-gTop,rx:2}));
     ground.appendChild(el("rect",{"class":"g-post",x:gx-bar/2,y:gTop-bar/2,width:gw+bar,height:bar,rx:2}));
 
-    /* 三角錐 */
-    [[188,96],[452,90],[742,86]].forEach(function(c,k){
-      var w = 9, h = 20, x = c[0], b = c[1];
-      var g = el("g",{"class": k===1 ? "g-cone-b" : "g-cone"});
-      g.appendChild(el("path",{d:"M"+x+","+(b-h)+" L"+(x+w)+","+b+" L"+(x-w)+","+b+" Z"}));
-      g.appendChild(el("rect",{x:x-w-2,y:b-2.5,width:(w+2)*2,height:3.5,rx:1.6}));
-      ground.appendChild(g);
-    });
 
     /* 彩色停機坪 */
-    [[320,102,"var(--gold)"],[596,94,"var(--amber)"],[830,90,"var(--coral)"]].forEach(function(p){
+    [[188,100,"var(--coral)"],[330,104,"var(--gold)"],[476,96,"var(--amber)"],[622,92,"var(--gold)"],[790,90,"var(--coral)"]].forEach(function(p){
       ground.appendChild(el("ellipse",{"class":"g-pad",cx:p[0],cy:p[1],rx:30,ry:8,stroke:p[2]}));
       ground.appendChild(el("ellipse",{"class":"g-pad",cx:p[0],cy:p[1],rx:13,ry:3.5,stroke:p[2],opacity:".65"}));
     });
@@ -942,6 +936,7 @@ footer{border-top:2px dashed var(--line-strong);padding:2rem 0 3rem;color:var(--
     d.appendChild(el("rect",{x:38,y:38,width:24,height:24,rx:7}));
     ground.appendChild(d);
   }
+
 
   /* 圖片放大檢視 */
   var lb = document.getElementById("lb");
